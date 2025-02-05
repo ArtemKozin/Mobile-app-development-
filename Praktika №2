@@ -1,0 +1,78 @@
+ //Операции с числами
+
+    val XA=99 //Задание 1
+    println(XA/10)
+    println(XA%10)
+    println(XA/10+XA%100)
+
+   val a1 =909 //Задание 2
+    println(a1/10)
+    println(a1%100)
+    println(a1/10+a1%100)
+
+    print("Введите первое число") //задание 3
+    val O1 = readln().toDouble()
+    print ("Введите второе число")
+    val O2 = readln().toDouble()
+    println(O1/O2)
+
+//Задание 4
+ val one = 2.0
+ val two = 3.0
+ val result = one.pow(two)
+ println("Результат: $result")
+
+ //Задание 5
+
+  val I1 = 16.0  // Число
+  val I2 = 4.0   // Степень корня
+  val root = I1.pow(1.0 / I2)
+  println("Корень $I2 степени из $I1 = $root")
+
+ //Вычисление логических выражений
+
+    val a = true//Задание 1
+    val b= false
+    val c = false
+    println(") ${a || b}")  // true
+    println(") ${a && b}")  // false
+    println(") ${b || c}")  // false
+
+
+    val x = false//Задание 2
+    val y = true
+    val z = false
+    println(") ${x || z}")  // false
+    println(") ${x && y}")  // false
+    println(") ${x && z}")  // false
+
+     //Задание 3
+    println(") ${!a && b}")  // false
+    println(") ${a || !b}")  // true
+    println(") ${(a && b) || c}")  // false
+
+    val x1 = true//Задание 4-5
+    val y1 = true
+    val z1 = false
+    println(") ${!x1 && y1}")  // false
+    println(") ${x1 || !y1}")  // true
+    println(") ${x1 || (y1 && z1)}")  // true
+
+    val x2= false//Задание 6
+    val y2 = false
+    val z2 = true
+    println(") ${x2 || (y2 && !z2)}")  // false
+    println(") ${(x2 && !y2) ||z2}")  // true
+    println(") ${!x2 && !y2}")  // true
+
+    println(") ${x2 && (!y2 || z2)}")  // false
+    println(") ${!(x2 && z2) || y2}")  // true
+    println(") ${x2 || !(y2 || z2)}")  // false
+
+    //Задание 7
+    println(") ${a || !(a && b) || c}")  // true
+    println(" ${!a || (a && (b || c))}")  // false
+    println(") ${(a || (c && !c)) && c}")  // false
+
+
+    }
