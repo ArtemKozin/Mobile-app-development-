@@ -1,0 +1,155 @@
+// 1. Определить день недели по номеру
+fun main() {
+    print("Введите номер дня недели (1-7): ")
+    val dayNumber = readln()?. toIntOrNull() ?:0
+    val dayOfWeek = when (dayNumber){
+    1 -> "Понедельник"
+    2 -> "Вторник"
+    3 -> "Среда"
+    4 -> "Четверг"
+    5 -> "Пятница"
+    6 -> "Суббота"
+    7 -> "Воскресенье"
+    else -> "Неверный номер дня"
+}
+    println(dayOfWeek)
+}
+
+// 2 задание. "Определить тип треугольника по длинам сторон
+fun main(){
+
+    println("Введите длину стороны a: ")
+    val a = readln()?.toIntOrNull()?:0
+    println("Введите длину стороны b: ")
+    val b = readln()?.toIntOrNull()?:0
+    println("Введите длину стороны c: ")
+    val c = readln()?.toIntOrNull()?:0
+    val triangleType = when {
+        a == b && b == c -> "Равносторонний"
+        a == b || b == c || a == c -> "Равнобедренный"
+        else -> "Разносторонний"
+    }
+    println("Тип треугольника: $triangleType")
+}
+
+// 3 задание. Вывод оценок по числовым значениям
+fun main(){
+    print("Введите числовое значение (0-100): ")
+    val score =readln()?.toIntOrNull()?:0
+
+    //Определение оценки
+    val grade = when (score){
+    in 90..100 -> "A"
+    in 80..89 -> "B"
+    in 70..79 -> "C"
+    in 60..69 -> "D"
+    else -> "F"
+}
+    println("Оценка: $grade")
+    }
+
+// 4 задание. Определение времени суток
+fun main(){
+    print("Введите текущий час: ")
+    val hour = readln()?.toIntOrNull()?:-1
+    // Определение времени суток
+    val timeOfDay = when (hour) {
+    in 6..11 -> "Утро"
+    in 12..17 -> "День"
+    in 18..23 -> "Вечер"
+    in 0..5 -> "Ночь"
+    else -> "Неверное время"
+}
+println("Время суток: $timeOfDay")
+}
+
+
+// 5 задание. "Определить знак числа"
+fun main() {
+        println("Введите число:")
+        val number = readLine()?.toDoubleOrNull() ?: 0.0
+        when {
+            number > 0 -> println("Число положительное.")
+            number < 0 -> println("Число отрицательное.")
+            else -> println("Число равно нулю.")
+        }
+    }
+
+// 6 задание. "Угадай Число"
+import kotlin.random.Random
+fun main() {
+    
+    val secretNumber = Random.nextInt(1, 101) // Загадываем случайное число от 1 до 100
+    var attempts = 0
+    println("Добро пожаловать в игру 'Угадай число'!")
+    println("Я загадал число от 1 до 100. Попробуйте его угадать.")
+    while (true) {
+        print("Введите ваше предположение: ")
+        val userGuess = readLine()?.toIntOrNull() ?: continue
+       
+        attempts++
+        when {
+            userGuess < secretNumber -> println("Ваше число слишком маленькое. Попробуйте снова.")
+            userGuess > secretNumber -> println("Ваше число слишком большое. Попробуйте снова.")
+            else -> {
+                println("Поздравляем! Вы угадали за $attempts попыток.")
+                break
+            }
+        }
+    }
+}
+
+
+// Задание 7. Определение длины строки
+fun main() {
+    print("Введите строку: ")
+    val inputString = readLine() ?: ""
+    val stringLength = inputString.length
+    println("Длина введённой строки: $stringLength")
+}
+
+// Задание 8. Определить время приготовления по типу пищи
+fun getCookingTime(foodType: String): Int {
+    val cookingTimes = mapOf(
+        "говядина" to 30,
+        "свинина" to 25,
+        "баранина" to 35,
+        "птица" to 20,
+        "рыба" to 15,
+        "овощи" to 10
+    )
+    return cookingTimes[foodType] ?: 0
+}
+
+fun main() {
+    print("Введите тип пищи (говядина, свинина, баранина, птица, рыба или овощи): ")
+    val foodType = readLine() ?: ""
+    val cookingTime = getCookingTime(foodType.toLowerCase())
+    if (cookingTime > 0) {
+        println("Время приготовления $foodType составляет примерно $cookingTime минут.")
+    } else {
+        println("Неизвестный тип пищи. Пожалуйста, попробуйте снова.")
+    }
+}
+
+// Задание 9. Определение длины строки
+fun main() {
+    print("Введите строку: ")
+    val inputString = readLine() ?: ""
+    val stringLength = inputString.length
+    println("Длина введённой строки: $stringLength")
+}
+
+// Задание 10. Способ оплаты
+fun main() {
+    println("Выберите способ оплаты (наличные, кредитная карта, PayPal):")
+    val paymentMethod = readLine()?.toLowerCase()
+    when (paymentMethod) {
+        "наличные" -> println("Вы выбрали оплату наличными. Подготовьте сумму к оплате.")
+        "кредитная карта" -> println("Вы выбрали оплату кредитной картой. Введите данные карты.")
+        "paypal" -> println("Вы выбрали оплату через PayPal. Вы будете перенаправлены на страницу PayPal.")
+        else -> println("Неизвестный способ оплаты. Пожалуйста, выберите один из предложенных вариантов.")
+    }
+}
+
+
