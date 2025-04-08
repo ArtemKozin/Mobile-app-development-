@@ -1,0 +1,199 @@
+import kotlin.random.Random
+
+fun main() {
+    // 7. Фибоначчи
+    print("Введите N: ")
+    val nFib = readLine()!!.toInt()
+    var first = 0
+    var second = 1
+    for (i in 1..nFib) {
+        print("$first ")
+        val next = first + second
+        first = second
+        second = next
+    }
+    println()
+
+    // 8. НОД
+    print("Введите первое число: ")
+    var a = readLine()!!.toInt()
+    print("Введите второе число: ")
+    var b = readLine()!!.toInt()
+    while (b != 0) {
+        val temp = b
+        b = a % b
+        a = temp
+    }
+    println("НОД: $a")
+
+    // 9. Обратный порядок
+    print("Введите строку: ")
+    val inputStr = readLine()!!
+    println(inputStr.reversed())
+
+    // 10. Сумма цифр числа
+    print("Введите число: ")
+    var num = readLine()!!.toInt()
+    var digitSum = 0
+    while (num != 0) {
+        digitSum += num % 10
+        num /= 10
+    }
+    println("Сумма цифр: $digitSum")
+
+    // 11. Анаграммы
+    print("Введите первую строку: ")
+    val str1 = readLine()!!
+    print("Введите вторую строку: ")
+    val str2 = readLine()!!
+    println(if (str1.toCharArray().sorted() == str2.toCharArray().sorted()) "Анаграммы" else "Не анаграммы")
+
+    // 12. Числовая последовательность
+    print("Введите начальное число: ")
+    var current = readLine()!!.toInt()
+    print("Введите шаг: ")
+    val step = readLine()!!.toInt()
+    repeat(10) {
+        print("$current ")
+        current += step
+    }
+    println()
+
+    // 13. Таблица квадратов
+    for (i in 1..20) {
+        println("$i^2 = ${i * i}")
+    }
+
+    // 14. Генерация случайных чисел
+    repeat(10) {
+        print("${Random.nextInt(1, 101)} ")
+    }
+    println()
+
+    // 15. Проверка палиндрома
+    print("Введите строку: ")
+    val word = readLine()!!
+    println(if (word == word.reversed()) "Палиндром" else "Не палиндром")
+
+    // 16. Сумма квадратов
+    print("Введите N: ")
+    val nSquares = readLine()!!.toInt()
+    var squareSum = 0
+    for (i in 1..nSquares) {
+        squareSum += i * i
+    }
+    println("Сумма квадратов: $squareSum")
+
+    // 17. Вывод символов
+    print("Введите строку: ")
+    val text = readLine()!!
+    for (ch in text) println(ch)
+
+    // 18. Лестница
+    print("Введите высоту лестницы: ")
+    val height = readLine()!!.toInt()
+    for (i in 1..height) {
+        println("#".repeat(i))
+    }
+
+    // 19. Сортировка списка
+    val numbers = mutableListOf(34, 12, 56, 78, 23)
+    for (i in 0 until numbers.size - 1) {
+        for (j in 0 until numbers.size - i - 1) {
+            if (numbers[j] > numbers[j + 1]) {
+                val temp = numbers[j]
+                numbers[j] = numbers[j + 1]
+                numbers[j + 1] = temp
+            }
+        }
+    }
+    println(numbers)
+
+    // 20. Простые числа в диапазоне
+    val rangeStart = 10
+    val rangeEnd = 50
+    for (i in rangeStart..rangeEnd) {
+        if (isPrime(i)) println(i)
+    }
+
+    // 22. Угадай число
+    val secret = Random.nextInt(1, 101)
+    var guess: Int
+    do {
+        print("Угадайте число: ")
+        guess = readLine()!!.toInt()
+        when {
+            guess < secret -> println("Мало")
+            guess > secret -> println("Много")
+            else -> println("Угадали!")
+        }
+    } while (guess != secret)
+
+    // 23. Сложение и умножение
+    while (true) {
+        print("Введите две цифры: ")
+        val x = readLine()!!.toInt()
+        val y = readLine()!!.toInt()
+        println("Сумма: ${x + y}")
+        println("Произведение: ${x * y}")
+        print("Введите 'стоп' для выхода: ")
+        if (readLine() == "стоп") break
+    }
+
+    // 24. Транспонирование матрицы
+    val matrix = arrayOf(
+        intArrayOf(1, 2, 3),
+        intArrayOf(4, 5, 6),
+        intArrayOf(7, 8, 9)
+    )
+    val transposed = Array(matrix[0].size) { i -> IntArray(matrix.size) { j -> matrix[j][i] } }
+    transposed.forEach { println(it.joinToString()) }
+
+    // 25. Кубы чисел
+    for (i in 1..10) {
+        println("Куб числа $i: ${i * i * i}")
+    }
+
+    // 26. Сумма чётных и нечётных чисел
+    val nRange = 10
+    var sumEven = 0
+    var sumOdd = 0
+    for (i in 1..nRange) {
+        if (i % 2 == 0) sumEven += i else sumOdd += i
+    }
+    println("Сумма четных: $sumEven")
+    println("Сумма нечетных: $sumOdd")
+
+    // 27. Печать числа "Пирамида"
+    val pyramidHeight = 5
+    for (i in 1..pyramidHeight) {
+        println((1..i).joinToString(" "))
+    }
+
+    // 28. Определение порядка
+    val nums = List(10) { Random.nextInt(1, 101) }
+    println("Исходный список: $nums")
+    println("Отсортированный список: ${nums.sorted()}")
+
+    // 29. Сумма ряда
+    val rowEnd = 5
+    var harmonicSum = 0.0
+    for (i in 1..rowEnd) {
+        harmonicSum += 1.0 / i
+    }
+    println("Сумма ряда: $harmonicSum")
+
+    // 30. Конвертация в двоичную систему
+    print("Введите число в десятичной системе: ")
+    val decimalNumber = readLine()!!.toInt()
+    val binary = Integer.toBinaryString(decimalNumber)
+    println("Число $decimalNumber в двоичной системе: $binary")
+}
+
+fun isPrime(n: Int): Boolean {
+    if (n < 2) return false
+    for (i in 2..Math.sqrt(n.toDouble()).toInt()) {
+        if (n % i == 0) return false
+    }
+    return true
+}
