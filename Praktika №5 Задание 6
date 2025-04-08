@@ -1,0 +1,25 @@
+
+// Задание 6. Угадай число
+import kotlin.random.Random
+
+fun main() {
+    val target = Random.nextInt(1, 101)
+    var tries = 0
+
+    println("Добро пожаловать в игру 'Угадай число'!")
+    println("Я загадал число от 1 до 100. Попробуйте его угадать.")
+
+    while (true) {
+        print("Введите ваше предположение: ")
+        val guess = readLine()?.toIntOrNull() ?: continue
+        tries++
+        when {
+            guess < target -> println("Ваше число слишком маленькое. Попробуйте снова.")
+            guess > target -> println("Ваше число слишком большое. Попробуйте снова.")
+            else -> {
+                println("Поздравляем! Вы угадали за $tries попыток.")
+                break
+            }
+        }
+    }
+}
