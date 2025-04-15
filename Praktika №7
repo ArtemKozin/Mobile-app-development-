@@ -1,0 +1,99 @@
+import kotlin.math.*
+import kotlin.random.Random
+
+// 1. Калькулятор (только +, -, *, /)
+fun calculator() {
+    println("Введите первое число: ")
+    val x = readln().toDouble()
+    println("Введите второе число: ")
+    val y = readln().toDouble()
+    println("Выберите операцию (+, -, *, /): ")
+    val op = readln()
+    when (op) {
+        "+" -> println("Результат: ${x + y}")
+        "-" -> println("Результат: ${x - y}")
+        "*" -> println("Результат: ${x * y}")
+        "/" -> println("Результат: ${x / y}")
+        else -> println("Неизвестная операция")
+    }
+}
+
+// 2. Проверка палиндрома
+fun checkPalindrome() {
+    println("Введите слово: ")
+    val txt = readln()
+    println(if (txt == txt.reversed()) "Слово \"$txt\" является палиндромом." else "Слово \"$txt\" не является палиндромом.")
+}
+
+// 3. Подсчёт очков команды
+fun calcPoints(win: Int, draw: Int, loss: Int): Int {
+    return win * 3 + draw
+}
+
+// 4. Минимальное число в списке
+fun findMin(nums: List<Int>): Int {
+    return nums.minOrNull() ?: error("Список пуст")
+}
+
+// 5. Проверка равенства двух чисел
+fun isEqual(m: Int, n: Int): Boolean {
+    return m == n
+}
+
+fun main() {
+    calculator()
+    checkPalindrome()
+
+    println("Введите количество побед: ")
+    val w = readln().toInt()
+    println("Введите количество ничьих: ")
+    val d = readln().toInt()
+    println("Введите количество поражений: ")
+    val l = readln().toInt()
+    val score = calcPoints(w, d, l)
+    println("Команда набрала $score очков.")
+
+    println("Введите числа через пробел: ")
+    val nums = readln().split(" ").map { it.toInt() }
+    println("Минимальное число: ${findMin(nums)}")
+
+    println("Введите первое число: ")
+    val a = readln().toInt()
+    println("Введите второе число: ")
+    val b = readln().toInt()
+    println("Числа равны? ${isEqual(a, b)}")
+
+    // 6. Игра 21
+    var total = 0
+    var finished = false
+    println("Добро пожаловать в игру '21'!")
+    println("Цель — набрать сумму очков, близкую к 21, но не больше.")
+
+    while (!finished) {
+        println("Текущая сумма: $total")
+        print("Взять карту? (да/нет): ")
+        when (readln().lowercase()) {
+            "да" -> {
+                val card = Random.nextInt(1, 12)
+                total += card
+                println("Вам выпала карта: $card")
+                if (total > 21) {
+                    println("Сумма: $total. Вы проиграли.")
+                    finished = true
+                }
+            }
+            "нет" -> {
+                println("Итоговая сумма: $total")
+                when {
+                    total == 21 -> println("Поздравляем! Ровно 21!")
+                    total in 18..20 -> println("Хороший результат!")
+                    else -> println("Можно было рискнуть ещё...")
+                }
+                finished = true
+            }
+            else -> println("Введите 'да' или 'нет'.")
+        }
+    }
+
+    println("Спасибо за игру!")
+}
